@@ -10,7 +10,7 @@
 #import "CLSplitCascadeViewController.h"
 
 @interface ExampleSplitCascadeViewController : CLSplitCascadeViewController {
-    
+
 }
 
 @end

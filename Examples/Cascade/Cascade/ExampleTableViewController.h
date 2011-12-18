@@ -10,7 +10,7 @@
 #import "CLTableViewController.h"
 
 @interface ExampleTableViewController : CLTableViewController {
-    
+
 }
 
 @end

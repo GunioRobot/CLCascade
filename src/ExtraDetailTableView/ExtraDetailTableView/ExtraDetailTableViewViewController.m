@@ -24,14 +24,14 @@
 - (void)dealloc
 {
     [super dealloc];
-    
+
 }
 
 - (void)didReceiveMemoryWarning
 {
     // Releases the view if it doesn't have a superview.
     [super didReceiveMemoryWarning];
-    
+
     // Release any cached data, images, etc that aren't in use.
 }
 
@@ -40,26 +40,26 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    
+
     // Uncomment the following line to preserve selection between presentations.
     // self.clearsSelectionOnViewWillAppear = NO;
-    
+
     // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
     // self.navigationItem.rightBarButtonItem = self.editButtonItem;
-    
+
     _detailTableView = [[UITableView alloc] init];
-    
+
     [_detailTableView setBackgroundColor: [UIColor purpleColor]];
     [_detailTableView setAllowsSelection: NO];
     [_detailTableView setDataSource: self];
     [_detailTableView setDelegate: self];
 
     [self.tableView setAllowsSelection: NO];
-    
+
     self.delegate = self;
     self.showShadows = YES;
     self.hideDetailViewWhenTouchEnd = NO;
-    
+
 }
 
 - (void)viewDidUnload
@@ -97,25 +97,25 @@
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     static NSString *CellIdentifier = @"Cell";
-    
+
     UITableViewCell *cell = (UITableViewCell*)[tableView dequeueReusableCellWithIdentifier:CellIdentifier];
     if (cell == nil) {
         cell = [[[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier] autorelease];
-        
+
         if (tableView != _detailTableView) {
-            
+
             // ad default gesture recognizser (UIPanGestureRecognizer)
             // you can implement here other recognizer, if you want
             [self addDefaultGestureRecognizerToCell: cell];
         }
     }
-    
+
     // Configure the cell...
     cell.textLabel.text = @"text";
-    
+
     NSUInteger index = indexPath.row % 6;
     cell.imageView.image = [UIImage imageNamed: [NSString stringWithFormat: @"%i.png", index]];
-    
+
     return cell;
 }
 

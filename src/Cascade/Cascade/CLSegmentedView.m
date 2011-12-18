@@ -35,7 +35,7 @@
         _roundedCornersView = [[UIView alloc] init];
         [_roundedCornersView setBackgroundColor: [UIColor clearColor]];
         [self addSubview: _roundedCornersView];
-        
+
         _viewSize = CLViewSizeNormal;
         _rectCorner = UIRectCornerAllCorners;
         _showRoundedCorners = NO;
@@ -66,13 +66,13 @@
 
         if (_contentView) {
             [_contentView setAutoresizingMask:
-             UIViewAutoresizingFlexibleLeftMargin | 
-             UIViewAutoresizingFlexibleRightMargin | 
-             UIViewAutoresizingFlexibleBottomMargin | 
-             UIViewAutoresizingFlexibleTopMargin | 
-             UIViewAutoresizingFlexibleWidth | 
+             UIViewAutoresizingFlexibleLeftMargin |
+             UIViewAutoresizingFlexibleRightMargin |
+             UIViewAutoresizingFlexibleBottomMargin |
+             UIViewAutoresizingFlexibleTopMargin |
+             UIViewAutoresizingFlexibleWidth |
              UIViewAutoresizingFlexibleHeight];
-            
+
             [_roundedCornersView addSubview: _contentView];
             [self setNeedsLayout];
         }
@@ -82,19 +82,19 @@
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////
 - (void) setHeaderView:(UIView*)headerView {
-    
+
     if (_headerView != headerView) {
         [_headerView removeFromSuperview];
-        
+
         _headerView = headerView;
 
         if (_headerView) {
             [_headerView setAutoresizingMask:
-             UIViewAutoresizingFlexibleLeftMargin | 
-             UIViewAutoresizingFlexibleRightMargin | 
+             UIViewAutoresizingFlexibleLeftMargin |
+             UIViewAutoresizingFlexibleRightMargin |
              UIViewAutoresizingFlexibleTopMargin];
             [_headerView setUserInteractionEnabled:YES];
-            
+
             [_roundedCornersView addSubview: _headerView];
             [self setNeedsLayout];
         }
@@ -103,18 +103,18 @@
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////
 - (void) setFooterView:(UIView*)footerView {
-    
+
     if (_footerView != footerView) {
         [_footerView removeFromSuperview];
-        
+
         _footerView = footerView;
         if (_footerView) {
             [_footerView setAutoresizingMask:
-             UIViewAutoresizingFlexibleLeftMargin | 
-             UIViewAutoresizingFlexibleRightMargin | 
+             UIViewAutoresizingFlexibleLeftMargin |
+             UIViewAutoresizingFlexibleRightMargin |
              UIViewAutoresizingFlexibleBottomMargin];
             [_footerView setUserInteractionEnabled:YES];
-            
+
             [_roundedCornersView addSubview: _footerView];
             [self setNeedsLayout];
         }
@@ -135,9 +135,9 @@
 
     if (view != _shadowView) {
         _shadowView = view;
-        
+
         [self insertSubview:_shadowView atIndex:0];
-        
+
         [self setNeedsLayout];
         [self setNeedsDisplay];
     }
@@ -151,7 +151,7 @@
 
     _shadowView = nil;
     [self setNeedsLayout];
-    
+
 }
 
 
@@ -160,7 +160,7 @@
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////
 - (void) updateRoundedCorners {
-    
+
     if (_showRoundedCorners) {
         CGRect toolbarBounds = self.bounds;
         CAShapeLayer *maskLayer = [CAShapeLayer layer];
@@ -168,10 +168,10 @@
                                                    byRoundingCorners:_rectCorner
                                                          cornerRadii:CGSizeMake(6.0f, 6.0f)];
         [maskLayer setPath:[path CGPath]];
-        
+
         _roundedCornersView.layer.masksToBounds = YES;
         _roundedCornersView.layer.mask = maskLayer;
-    } 
+    }
     else {
         _roundedCornersView.layer.masksToBounds = NO;
         [_roundedCornersView.layer setMask: nil];
@@ -183,29 +183,29 @@
 - (void) layoutSubviews {
 
     CGRect rect = self.bounds;
-    
+
     CGFloat viewWidth = rect.size.width;
     CGFloat viewHeight = rect.size.height;
     CGFloat headerHeight = 0.0;
     CGFloat footerHeight = 0.0;
-    
+
     _roundedCornersView.frame = rect;
-    
+
     if (_headerView) {
         headerHeight = _headerView.frame.size.height;
-        
+
         CGRect newHeaderViewFrame = CGRectMake(0.0, 0.0, viewWidth, headerHeight);
         [_headerView setFrame: newHeaderViewFrame];
     }
-    
+
     if (_footerView) {
         footerHeight = _footerView.frame.size.height;
         CGFloat footerY = viewHeight - footerHeight;
-        
+
         CGRect newFooterViewFrame = CGRectMake(0.0, footerY, viewWidth, footerHeight);
         [_footerView setFrame: newFooterViewFrame];
     }
-    
+
     [_contentView setFrame: CGRectMake(0.0, headerHeight, viewWidth, viewHeight - headerHeight - footerHeight)];
 
     if (_shadowView) {

@@ -25,7 +25,7 @@
 {
     // Releases the view if it doesn't have a superview.
     [super didReceiveMemoryWarning];
-    
+
     // Release any cached data, images, etc that aren't in use.
 }
 
@@ -35,7 +35,7 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    
+
     //disable tableview separator
     [self.tableView setSeparatorStyle: UITableViewCellSeparatorStyleNone];
 
@@ -59,7 +59,7 @@
 }
 
 
-#pragma mark - 
+#pragma mark -
 #pragma mark Table view data source - Categories
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////
@@ -80,7 +80,7 @@
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     static NSString *CellIdentifier = @"Cell";
-    
+
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
     if (cell == nil) {
         cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
@@ -96,10 +96,10 @@
         cell.backgroundView.frame = cell.bounds;
         cell.backgroundView.alpha = 0.5;
     }
-    
+
     // Configure the cell...
     cell.textLabel.text = [NSString stringWithFormat:@"Category: %i", indexPath.row];
-    
+
     return cell;
 }
 
@@ -110,7 +110,7 @@
     // if you select row, then create and push custom UIViewController
     ExampleTableViewController* rootTableViewController = [[ExampleTableViewController alloc] initWithTableViewStyle: UITableViewStylePlain];
     [self.cascadeNavigationController setRootViewController:rootTableViewController animated:YES];
-    
+
 }
 
 @end

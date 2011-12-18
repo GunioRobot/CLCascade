@@ -12,7 +12,7 @@
 #import "ExampleTableViewController.h"
 
 @interface ExampleCategoriesViewController : CLCategoriesViewController {
-    
+
 }
 
 @end

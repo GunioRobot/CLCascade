@@ -47,17 +47,17 @@
  */
 - (void) addViewController:(CLViewController*)viewController sender:(CLViewController*)sender animated:(BOOL)animated;
 
-/* 
+/*
  First in hierarchy CascadeViewController (opposite to lastCascadeViewController)
  */
 - (UIViewController*) rootViewController;
 
-/* 
+/*
  Last in hierarchy CascadeViewController (opposite to rootViewController)
  */
 - (UIViewController*)  lastCascadeViewController;
 
-/* 
+/*
  Return first visible view controller (load if needed)
  */
 - (UIViewController*) firstVisibleViewController;

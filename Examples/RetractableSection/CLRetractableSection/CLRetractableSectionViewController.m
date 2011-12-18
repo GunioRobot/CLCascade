@@ -26,10 +26,10 @@
 {
     [super viewDidLoad];
     self.tableView.sectionHeaderHeight = HEADER_HEIGHT;
-    
+
     // create section controller
     _retractableSectionController = [[CLRetractableSectionController alloc] initWithTableView: self.tableView];
-    
+
     // add section list
     NSUInteger sectionCount = [self numberOfSectionsInTableView:self.tableView];
     [_retractableSectionController reloadSectionsList: sectionCount];
@@ -53,14 +53,14 @@
 -(UIView*)tableView:(UITableView*)tableView viewForHeaderInSection:(NSInteger)section {
 
     // section view for section index
-    
+
     CLRetractableSectionItem *sectionInfo = [_retractableSectionController sectionItemAtIndex:section];
 
     if (!sectionInfo.headerView) {
         sectionInfo.headerView = [[[CLRetractableSectionHeaderView alloc] initWithFrame:CGRectMake(0.0, 0.0, self.tableView.bounds.size.width, HEADER_HEIGHT) title:@"sdfsdf" section:section] autorelease];
         [sectionInfo.headerView setDelegate: _retractableSectionController];
     }
-    
+
     return sectionInfo.headerView;
 }
 
@@ -79,21 +79,21 @@
 }
 
 -(NSInteger)tableView:(UITableView*)tableView numberOfRowsInSection:(NSInteger)section {
-    
+
 	NSInteger ilosc_rekordow_w_sekcji = 2;
     return [_retractableSectionController numberOfRows:ilosc_rekordow_w_sekcji inSection:section];
-    
+
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     static NSString *CellIdentifier = @"Cell";
-    
+
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
     if (cell == nil) {
         cell = [[[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier] autorelease];
     }
-    
+
     // Configure the cell...
     cell.textLabel.text = @"sdfs";
     return cell;

@@ -35,21 +35,21 @@
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////
 - (void) addDivierView {
-    
+
     if ((!_backgroundView) || (!_verticalDividerImage)) return;
-    
+
     if (_dividerView) {
         [_dividerView removeFromSuperview];
         _dividerView = nil;
     }
-        
+
     _dividerView = [[UIView alloc] init];
     _dividerWidth = _verticalDividerImage.size.width;
     [_dividerView setBackgroundColor:[UIColor colorWithPatternImage: _verticalDividerImage]];
-    
+
     [_backgroundView addSubview: _dividerView];
-    [self setNeedsLayout];   
-    
+    [self setNeedsLayout];
+
 }
 
 
@@ -108,7 +108,7 @@
     UIView* navigationView = [cascadeNavigationController view];
 
     if (CGRectContainsPoint(_categoriesView.frame, point)) {
-        
+
         UIView* rootView = [[cascadeNavigationController firstVisibleViewController] view];
         CGRect rootViewRect = [rootView convertRect:rootView.bounds toView:self];
 
@@ -123,18 +123,18 @@
         CGPoint newPoint = [self convertPoint:point toView:navigationView];
         return [navigationView hitTest:newPoint withEvent:event];
     }
-        
+
 }
 
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////
 - (void) layoutSubviews {
-    
+
     CGRect bounds = self.bounds;
-    
+
     CGRect categoriesFrame = CGRectMake(0.0, 0.0, CATEGORIES_VIEW_WIDTH, bounds.size.height);
     _categoriesView.frame = categoriesFrame;
-    
+
     CGRect cascadeNavigationFrame = bounds;
     _cascadeView.frame = cascadeNavigationFrame;
 
@@ -154,7 +154,7 @@
 - (void) setCategoriesView:(UIView*) aView {
     if (_categoriesView != aView) {
         _categoriesView = aView;
-        
+
         [self addSubview: _categoriesView];
         [self bringSubviewToFront: _cascadeView];
     }
@@ -165,7 +165,7 @@
 - (void) setCascadeView:(UIView*) aView {
     if (_cascadeView != aView) {
         _cascadeView = aView;
-                
+
         [self addSubview: _cascadeView];
         [self bringSubviewToFront: _cascadeView];
     }
@@ -176,10 +176,10 @@
 - (void) setBackgroundView:(UIView*) aView {
     if (_backgroundView != aView) {
         _backgroundView = aView;
-        
+
         [_dividerView removeFromSuperview];
         _dividerView = nil;
-        
+
         if (_cascadeView == nil) {
             [self addSubview: _backgroundView];
         } else {
@@ -196,7 +196,7 @@
 - (void) setVerticalDividerImage:(UIImage*) image {
     if (_verticalDividerImage != image) {
         _verticalDividerImage = image;
-        
+
         [self addDivierView];
     }
 }

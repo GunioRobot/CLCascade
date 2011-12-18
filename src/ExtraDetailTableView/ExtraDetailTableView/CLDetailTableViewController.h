@@ -13,21 +13,21 @@
 
 @interface CLDetailTableViewController : UITableViewController {
     NSIndexPath* _panIndexPath;
-    
+
     CAGradientLayer* _shadowAboveDetailView;
     CAGradientLayer* _shadowUnderDetailView;
-    
+
     UIPanGestureRecognizer* _gestureRecognizer;
-    
+
     UIView* _detailView;
-    
+
     BOOL    _showShadows;
     BOOL    _hideDetailViewWhenTouchEnd;
-    
+
     CGFloat _cellHeight;
-    
+
     id<CLDetailTableViewDelegate> _delegate;
-    
+
 }
 
 @property (nonatomic, assign) id<CLDetailTableViewDelegate> delegate;
@@ -58,7 +58,7 @@
 @protocol CLDetailTableViewDelegate <NSObject>
 
 @required
-- (UIView *) detailViewAtIndexPath:(NSIndexPath*)indexPath; 
+- (UIView *) detailViewAtIndexPath:(NSIndexPath*)indexPath;
 
 @optional
 - (void) tableView:(UITableView*)tableView willShowDetailView:(UIView*)detailView;

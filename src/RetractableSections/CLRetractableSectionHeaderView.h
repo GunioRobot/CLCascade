@@ -23,11 +23,11 @@
 @property (nonatomic, retain) UILabel *titleLabel;
 
 
-- (id)initWithFrame:(CGRect)frame 
+- (id)initWithFrame:(CGRect)frame
             section:(NSInteger)sectionNumber;
 
-- (id)initWithFrame:(CGRect)frame 
-              title:(NSString*)title 
+- (id)initWithFrame:(CGRect)frame
+              title:(NSString*)title
             section:(NSInteger)sectionNumber;
 
 - (void)toggleOpenWithUserAction:(BOOL)userAction;

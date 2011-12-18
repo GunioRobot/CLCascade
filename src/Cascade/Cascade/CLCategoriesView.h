@@ -10,7 +10,7 @@
 #import "CLSegmentedView.h"
 
 @interface CLCategoriesView : CLSegmentedView {
-    
+
 }
 
 @end

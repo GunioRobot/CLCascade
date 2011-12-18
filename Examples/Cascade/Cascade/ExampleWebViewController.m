@@ -23,7 +23,7 @@
 {
     // Releases the view if it doesn't have a superview.
     [super didReceiveMemoryWarning];
-    
+
     // Release any cached data, images, etc that aren't in use.
 }
 
@@ -36,7 +36,7 @@
 
     // add shadow
     [self addLeftBorderShadowWithWidth:40.0 andOffset:0.0f];
-    
+
     // add header view
     UIImageView* header = [[UIImageView alloc] initWithFrame: CGRectMake(0.0, 0.0, self.view.bounds.size.width, 45.0)];
     [header setImage: [UIImage imageNamed:@"ToolBar_479x45.png"]];
@@ -63,8 +63,8 @@
 ///////////////////////////////////////////////////////////////////////////////////////////////////
 - (NSURLRequest*) request {
     NSURL* url = [NSURL URLWithString: @"https://github.com/appunite/CLCascade"];
-    return [NSURLRequest requestWithURL:url 
-                            cachePolicy:NSURLRequestUseProtocolCachePolicy 
+    return [NSURLRequest requestWithURL:url
+                            cachePolicy:NSURLRequestUseProtocolCachePolicy
                         timeoutInterval:30.0];
 }
 

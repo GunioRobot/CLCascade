@@ -18,7 +18,7 @@
 
     UITableView* _tableView;
     NSMutableArray* _sectionList;
-    
+
     UITableViewRowAnimation _insertAnimation;
     UITableViewRowAnimation _deleteAnimation;
 

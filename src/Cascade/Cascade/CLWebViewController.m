@@ -51,7 +51,7 @@
 {
     // Releases the view if it doesn't have a superview.
     [super didReceiveMemoryWarning];
-    
+
     // Release any cached data, images, etc that aren't in use.
 }
 
@@ -66,7 +66,7 @@
 {
     [super viewDidLoad];
     _firstLoad = YES;
-    
+
     // create web view
     UIWebView* webView_ = [[UIWebView alloc] init];
     // set up webView
@@ -75,7 +75,7 @@
     [webView_ setDataDetectorTypes: UIDataDetectorTypeAll];
     // set contentView of CLSegmentedView
     [self setWebView: webView_];
-    
+
     // load request
     [self loadRequest];
 }
@@ -104,15 +104,15 @@
 ///////////////////////////////////////////////////////////////////////////////////////////////////
 - (void) loadRequest {
     if ([self.webView isLoading]) {
-        [self.webView stopLoading];    
+        [self.webView stopLoading];
     }
-    
+
     NSURLRequest* request = [NSURLRequest requestWithURL: (_requestURL) ? _requestURL : [NSURL URLWithString: DEFAULT_URL]
-                                             cachePolicy:NSURLRequestUseProtocolCachePolicy 
+                                             cachePolicy:NSURLRequestUseProtocolCachePolicy
                                          timeoutInterval:30.0];
-    [self.webView loadRequest: request];    
+    [self.webView loadRequest: request];
 }
- 
+
 
 #pragma mark -
 #pragma mark WebViewDelegate

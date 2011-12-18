@@ -17,11 +17,11 @@
     UIView* _footerView;
     UIView* _contentView;
     UIView* _roundedCornersView;
-    
+
     CGFloat _shadowWidth;
     CGFloat _shadowOffset;
     UIView* _shadowView;
-    
+
     BOOL _showRoundedCorners;
     UIRectCorner _rectCorner;
 }
@@ -37,7 +37,7 @@
 @property (nonatomic, strong) IBOutlet UIView* footerView;
 
 /*
- * Content view - located between header and footer view 
+ * Content view - located between header and footer view
  */
 @property (nonatomic, strong) IBOutlet UIView* contentView;
 
@@ -68,12 +68,12 @@
 
 - (id) initWithSize:(CLViewSize)size;
 
-/* 
+/*
  * This methoad add left outer shadow view with proper width
  */
 - (void) addLeftBorderShadowView:(UIView *)view withWidth:(CGFloat)width;
 
-/* 
+/*
  * This methoad remove left outer shadow
  */
 - (void) removeLeftBorderShadowView;

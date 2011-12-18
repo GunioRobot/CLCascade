@@ -11,7 +11,7 @@
 
 @interface CLCascadeTests : SenTestCase {
 @private
-    
+
 }
 
 @end

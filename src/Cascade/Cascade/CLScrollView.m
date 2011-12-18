@@ -29,12 +29,12 @@
         [self setShowsHorizontalScrollIndicator: NO];
 
         [self setAutoresizingMask:
-         UIViewAutoresizingFlexibleBottomMargin | 
-         UIViewAutoresizingFlexibleTopMargin | 
+         UIViewAutoresizingFlexibleBottomMargin |
+         UIViewAutoresizingFlexibleTopMargin |
          UIViewAutoresizingFlexibleHeight];
 
     }
-    
+
     return self;
 }
 

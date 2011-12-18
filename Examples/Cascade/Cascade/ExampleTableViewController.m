@@ -19,7 +19,7 @@
 {
     // Releases the view if it doesn't have a superview.
     [super didReceiveMemoryWarning];
-    
+
     // Release any cached data, images, etc that aren't in use.
 }
 
@@ -32,12 +32,12 @@
 
     // add shadow
     [self addLeftBorderShadowWithWidth:140.0 andOffset:0.0f];
-    
+
     // add header view
     UIImageView* header = [[UIImageView alloc] initWithFrame: CGRectMake(0.0, 0.0, self.view.bounds.size.width, 45.0)];
     [header setImage: [UIImage imageNamed:@"ToolBar_479x45.png"]];
     [self.segmentedView setHeaderView: header];
-    
+
     // show rounded corners
     [self setShowRoundedCorners: NO];
 }
@@ -82,19 +82,19 @@
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     static NSString *CellIdentifier = @"Cell";
-    
+
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
     if (cell == nil) {
         cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
     }
-    
+
     // Configure the cell...
 
     if (indexPath.row%2 == 0) {
         cell.textLabel.text = @"New Table View";
     } else {
         cell.textLabel.text = @"New Web View";
-    }    
+    }
     return cell;
 }
 
@@ -105,13 +105,13 @@
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
     CLViewController* viewController = nil;
-    
+
     if (indexPath.row%2 == 0) {
         viewController = [[ExampleTableViewController alloc] initWithTableViewStyle: UITableViewStylePlain];
     } else {
         viewController = [[ExampleWebViewController alloc] init];
-    } 
-    
+    }
+
     [self pushDetailViewController:viewController animated:YES];
 }
 

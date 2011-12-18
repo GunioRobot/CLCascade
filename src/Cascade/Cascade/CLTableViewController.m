@@ -43,12 +43,12 @@
 {
     // Releases the view if it doesn't have a superview.
     [super didReceiveMemoryWarning];
-    
+
     // Release any cached data, images, etc that aren't in use.
 }
 
 
-#pragma mark 
+#pragma mark
 #pragma mark - View lifecycle
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////
@@ -57,25 +57,25 @@
     if (nib) {
         NSBundle *bundle = self.nibBundle;
         if(!bundle) bundle = [NSBundle mainBundle];
-        
+
         NSString *path = [bundle pathForResource:nib ofType:@"nib"];
-        
+
         if(path) {
             self.view = [[bundle loadNibNamed:nib owner:self options:nil] objectAtIndex: 0];
             [self.view setBackgroundColor: [UIColor clearColor]];
             return;
         }
     }
-    
+
     // create SegmentedView
     CLSegmentedView* view_ = [[CLSegmentedView alloc] initWithSize: _viewSize];
     self.view = view_;
-    
+
     UITableView* tableView_ = [[UITableView alloc] initWithFrame:CGRectZero style:_tableViewStyle];
     [tableView_ setDelegate: self];
     [tableView_ setDataSource: self];
     [self setTableView: tableView_];
-    
+
     // set clear background color
     [view_ setBackgroundColor: [UIColor clearColor]];
 
@@ -106,7 +106,7 @@
 }
 
 
-#pragma mark - 
+#pragma mark -
 #pragma mark Table view data source
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////
@@ -131,12 +131,12 @@
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     static NSString *CellIdentifier = @"Cell";
-    
+
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
     if (cell == nil) {
         cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
     }
-    
+
     return cell;
 }
 

@@ -4,7 +4,7 @@
 //
 //  Created by Emil Wojtaszek on 11-03-27.
 //  Copyright 2011 CreativeLabs.pl. All rights reserved.
-// 
+//
 
 #import "CascadeAppDelegate.h"
 #import "CLSplitCascadeViewController.h"
@@ -19,18 +19,18 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
-    
+
     CLCascadeNavigationController* cascadeNavigationController = [[CLCascadeNavigationController alloc] init];
     CLCategoriesViewController* categoriesViewController = [[CLCategoriesViewController alloc] initWithNavigationController: cascadeNavigationController];
-    
+
     [self.viewController setCascadeNavigationController: cascadeNavigationController];
     [self.viewController setCategoriesViewController: categoriesViewController];
-    
-    
+
+
     // Override point for customization after application launch.
     self.window.rootViewController = self.viewController;
     [self.window makeKeyAndVisible];
-    
+
     return YES;
 }
 
@@ -45,7 +45,7 @@
 - (void)applicationDidEnterBackground:(UIApplication *)application
 {
     /*
-     Use this method to release shared resources, save user data, invalidate timers, and store enough application state information to restore your application to its current state in case it is terminated later. 
+     Use this method to release shared resources, save user data, invalidate timers, and store enough application state information to restore your application to its current state in case it is terminated later.
      If your application supports background execution, this method is called instead of applicationWillTerminate: when the user quits.
      */
 }

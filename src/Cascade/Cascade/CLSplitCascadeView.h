@@ -15,7 +15,7 @@
     // views
     UIView* _categoriesView;
     UIView* _cascadeView;
-     
+
     // background
     UIView*     _backgroundView;
 
@@ -23,7 +23,7 @@
     UIView*     _dividerView;
     UIImage*    _verticalDividerImage;
     CGFloat     _dividerWidth;
-    
+
 }
 
 @property (nonatomic, strong) IBOutlet CLSplitCascadeViewController* splitCascadeViewController;

@@ -15,24 +15,24 @@
 @synthesize delegate, section, titleLabel, isOpened;
 
 + (Class)layerClass {
-    
+
     return [CAGradientLayer class];
 }
 
 - (id)initWithFrame:(CGRect)frame section:(NSInteger)sectionNumber {
 
     self = [super initWithFrame:frame];
-    
+
     if (self != nil) {
 
         section = sectionNumber;
         isOpened = NO;
-        
+
         // Set up the tap gesture recognizer.
         UITapGestureRecognizer *tapGesture = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(toggleOpen:)];
         [self addGestureRecognizer:tapGesture];
         [tapGesture release];
-        
+
         self.userInteractionEnabled = YES;
 
         // Set the colors for the gradient layer.
@@ -49,20 +49,20 @@
         }
         [(CAGradientLayer *)self.layer setColors:colors];
         [(CAGradientLayer *)self.layer setLocations:[NSArray arrayWithObjects:[NSNumber numberWithFloat:0.0], [NSNumber numberWithFloat:0.48], [NSNumber numberWithFloat:1.0], nil]];
-        
-        
+
+
     }
-    
+
     return self;
 
 }
 
 - (id)initWithFrame:(CGRect)frame title:(NSString*)title section:(NSInteger)sectionNumber {
-    
+
     self = [self initWithFrame:frame section:sectionNumber];
-    
+
     if (self != nil) {
-        
+
         CGRect titleLabelFrame = self.bounds;
         titleLabelFrame.origin.x += 35.0;
         titleLabelFrame.size.width -= 35.0;
@@ -75,13 +75,13 @@
         [self addSubview:titleLabel];
 
     }
-    
+
     return self;
 }
 
 
 - (IBAction)toggleOpen:(id)sender {
-    
+
     if (!isOpened) {
         [self toggleOpenWithUserAction:YES];
     }
@@ -89,10 +89,10 @@
 
 
 - (void)toggleOpenWithUserAction:(BOOL)userAction {
-    
+
     // Toggle the disclosure button state.
     isOpened = !isOpened;
-    
+
     // If this was a user action, send the delegate the appropriate message.
     if (userAction) {
         if (isOpened) {

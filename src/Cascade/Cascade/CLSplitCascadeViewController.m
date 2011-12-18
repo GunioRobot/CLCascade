@@ -20,7 +20,7 @@
 {
     _cascadeNavigationController = nil;
     _categoriesViewController = nil;
-    
+
 }
 
 
@@ -29,7 +29,7 @@
 {
     // Releases the view if it doesn't have a superview.
     [super didReceiveMemoryWarning];
-    
+
     // Release any cached data, images, etc that aren't in use.
 }
 
@@ -42,9 +42,9 @@
     if (nib) {
         NSBundle *bundle = self.nibBundle;
         if(!bundle) bundle = [NSBundle mainBundle];
-        
+
         NSString *path = [bundle pathForResource:nib ofType:@"nib"];
-        
+
         if(path) {
             self.view = [[bundle loadNibNamed:nib owner:self options:nil] objectAtIndex: 0];
             CLSplitCascadeView* view_ = (CLSplitCascadeView*)self.view;
@@ -53,7 +53,7 @@
             return;
         }
     }
-    
+
     CLSplitCascadeView* view_ = [[CLSplitCascadeView alloc] init];
     self.view = view_;
     [view_ setCategoriesView: self.categoriesViewController.view];
@@ -103,12 +103,12 @@
 ///////////////////////////////////////////////////////////////////////////////////////////////////
 - (void) setDividerImage:(UIImage*)image {
     [(CLSplitCascadeView*)self.view setVerticalDividerImage: image];
-    
+
 }
 
 
 #pragma mark -
-#pragma mark Setters 
+#pragma mark Setters
 
 /////////////////////////////////////////////////////////////////////////////////////////////////
 - (void) setCategoriesViewController:(CLCategoriesViewController *)viewController {

@@ -27,7 +27,7 @@
 - (UIView*) headerView {
 
     if (![self.view isKindOfClass:[CLSegmentedView class]]) return nil;
-    
+
     CLSegmentedView* view_ = (CLSegmentedView*)self.view;
     return view_.headerView;
 }
@@ -37,7 +37,7 @@
 - (UIView*) footerView {
 
     if (![self.view isKindOfClass:[CLSegmentedView class]]) return nil;
-    
+
     CLSegmentedView* view_ = (CLSegmentedView*)self.view;
     return view_.footerView;
 }

@@ -12,13 +12,13 @@
 @protocol CLViewControllerDelegate <NSObject>
 
 /*
- * Called when page (view of controller) will be unveiled by 
+ * Called when page (view of controller) will be unveiled by
  * another page or will slide in CascadeView bounds
  */
 - (void) pageDidAppear;
 
 /*
- * Called when page (view of this controller) will be shadowed by 
+ * Called when page (view of this controller) will be shadowed by
  * another page or will slide out CascadeView bounds
  */
 - (void) pageDidDisappear;

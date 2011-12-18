@@ -11,7 +11,7 @@
 @class CLRetractableSectionHeaderView;
 
 @interface CLRetractableSectionItem : NSObject {
-	
+
 }
 
 @property (nonatomic, assign) BOOL open;

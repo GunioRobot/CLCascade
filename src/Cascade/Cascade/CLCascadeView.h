@@ -19,10 +19,10 @@
 
     // scroll view
     CLScrollView* _scrollView;
-    
+
     // contain all pages, if page is unloaded then page is respresented as [NSNull null]
     NSMutableArray* _pages;
-    
+
     //sizes
     CGFloat _pageWidth;
     CGFloat _leftInset;

@@ -37,7 +37,7 @@
 {
     // Releases the view if it doesn't have a superview.
     [super didReceiveMemoryWarning];
-    
+
     // unload all invisible pages in cascadeView
     [_cascadeView unloadInvisiblePages];
 }
@@ -88,7 +88,7 @@
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////
 - (void) setWiderLeftInset:(CGFloat)inset {
-    [_cascadeView setWiderLeftInset: inset];    
+    [_cascadeView setWiderLeftInset: inset];
 }
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////
@@ -120,7 +120,7 @@
         NSUInteger index = [_viewControllers count] - 1;
         return [_viewControllers objectAtIndex: index];
     }
-    
+
     return nil;
 }
 
@@ -130,7 +130,7 @@
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////
 - (UIView*) cascadeView:(CLCascadeView *)cascadeView pageAtIndex:(NSInteger)index {
-    return [[_viewControllers objectAtIndex:index] view];    
+    return [[_viewControllers objectAtIndex:index] view];
 }
 
 
@@ -175,7 +175,7 @@
     if ([controller respondsToSelector:@selector(pageDidAppear)]) {
         [controller pageDidAppear];
     }
-    
+
     [self addPagesRoundedCorners];
 }
 
@@ -183,7 +183,7 @@
 ///////////////////////////////////////////////////////////////////////////////////////////////////
 - (void) cascadeView:(CLCascadeView*)cascadeView pageDidDisappearAtIndex:(NSInteger)index {
     if (index > [_viewControllers count] - 1) return;
-    
+
     UIViewController<CLViewControllerDelegate>* controller = [_viewControllers objectAtIndex: index];
     if ([controller respondsToSelector:@selector(pageDidAppear)]) {
         [controller pageDidDisappear];
@@ -198,7 +198,7 @@
     /*
      Override this methods to implement own actions, animations
      */
-    
+
     NSLog(@"cascadeViewDidStartPullingToDetachPages");
 }
 
@@ -222,7 +222,7 @@
         index--;
     }
     [cascadeView loadPageAtIndex:0];
-    
+
 }
 
 
@@ -249,16 +249,16 @@
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////
 - (void) addViewController:(CLViewController*)viewController sender:(CLViewController*)sender animated:(BOOL)animated {
-    
+
     // if in not sent from categoirs view
     if (sender) {
 
         // get index of sender
         NSInteger indexOfSender = [_viewControllers indexOfObject:sender];
-        
+
         // if sender is not last view controller
         if (indexOfSender != [_viewControllers count] - 1) {
-            
+
             // count of views to pop
             NSInteger count = [_viewControllers count] - indexOfSender - 1;
 
@@ -269,16 +269,16 @@
                 [_viewControllers removeLastObject];
             }
         }
-    } 
-    
+    }
+
     // set cascade navigator to view controller
     [viewController setCascadeNavigationController: self];
     // add controller to array
     [self.viewControllers addObject: viewController];
 
     // push view
-    [_cascadeView pushPage:[viewController view] 
-                  fromPage:[sender view] 
+    [_cascadeView pushPage:[viewController view]
+                  fromPage:[sender view]
                   animated:animated];
 }
 
@@ -289,7 +289,7 @@
     if (index != NSNotFound) {
         return [_viewControllers objectAtIndex: index];
     }
-    
+
     return nil;
 }
 
@@ -302,10 +302,10 @@
 
     if (index != NSNotFound) {
         UIViewController* viewController = [_viewControllers objectAtIndex: index];
-        
+
         if ([viewController isKindOfClass: [CLViewController class]]) {
             CLViewController* firstVisibleController = (CLViewController*)viewController;
-            
+
             if ([firstVisibleController showRoundedCorners]) {
                 CLSegmentedView* view = (CLSegmentedView*)firstVisibleController.view;
                 [view setShowRoundedCorners: YES];
@@ -318,13 +318,13 @@
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////
 - (void) addPagesRoundedCorners {
-    
+
     // unload all rounded corners
     for (id item in [_cascadeView visiblePages]) {
         if (item != [NSNull null]) {
             if ([item isKindOfClass:[CLSegmentedView class]]) {
                 CLSegmentedView* view = (CLSegmentedView*)item;
-                
+
                 if ([view showRoundedCorners]) {
                     [view setShowRoundedCorners: NO];
                 }
@@ -334,20 +334,20 @@
 
     // get index of first visible page
     NSInteger indexOfFirstVisiblePage = [_cascadeView indexOfFirstVisibleView: NO];
-    
+
     // get index of last visible page
     NSInteger indexOfLastVisiblePage = [_cascadeView indexOfLastVisibleView: NO];
 
     if (indexOfLastVisiblePage == indexOfFirstVisiblePage) {
         [self addRoundedCorner:UIRectCornerAllCorners toPageAtIndex: indexOfFirstVisiblePage];
-        
+
     } else {
 
         [self addRoundedCorner:UIRectCornerTopLeft | UIRectCornerBottomLeft toPageAtIndex:indexOfFirstVisiblePage];
-        
+
         if (indexOfLastVisiblePage == [_viewControllers count] -1) {
             [self addRoundedCorner:UIRectCornerTopRight | UIRectCornerBottomRight toPageAtIndex:indexOfLastVisiblePage];
-        }    
+        }
     }
 }
 
